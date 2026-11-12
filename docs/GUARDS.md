@@ -156,8 +156,9 @@ Legend: **DB** = Postgres (`supabase/migrations`), **Agent** = `agent/src/*.py`,
 | Browser blocks audio autoplay | "শব্দ চালু করুন" button | Web |
 | Call states | Connecting → calling the receptionist → live (listening/thinking/speaking, captions) → ended | Web |
 | Slow 3D load / no WebGL | Soft glow placeholder; the page works without the 3D | Web |
-| Two 3D scenes at once | Byte only renders while its section is on screen | Web `LazyByte` |
+| Two 3D scenes at once | The mascot only renders while its section is on screen | Web `LazyMascot` |
 | Phones | Mobile framing (head and shoulders), no horizontal overflow | Web |
+| Free database pauses after a quiet week | A Vercel Cron calls the slot API (a real database read) every Monday and Thursday, so Supabase never sees 7 idle days | `web/vercel.json` |
 | Slot board edge cases | Friday "বন্ধ", "এই দিনে চেম্বার নেই", "কোনো স্লট পাওয়া যাচ্ছে না"; booked slots disabled; every 30 s | Web `DoctorBoard` |
 | A slot booked on a call still looks free | The agent signals each booking, reschedule or cancel (participant attribute `bv.slots`); the board reloads within ~0.2 s, mid-call. The slot API is not cached (`no-store`), so the reload sees the change | Agent `_run` + Web `CallWidget`, `DoctorBoard`, `/api/availability` |
 | Receptionist frozen while the system works | While checking or booking (`bv.activity`), the avatar looks down as if at the schedule, held ~2 s (the database step itself takes ~0.15 s) | Agent `_run` + Web `AvatarBoy` |
