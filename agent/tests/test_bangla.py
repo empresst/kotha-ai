@@ -1,6 +1,7 @@
 """Unit tests for the Bangla text helpers (no network, no LLM)."""
 
 import sys
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -71,8 +72,30 @@ def test_dhaka_words_replaces_whole_words_only():
 
 
 def test_azure_pronunciation_rewrites_sare():
-    assert azure_pronunciation("বিকাল সাড়ে পাঁচটা") == "বিকাল পাঁচটা তিরিশে"
+    def say(text):
+        return unicodedata.normalize("NFC", azure_pronunciation(text))
 
+    # "ড়" written as one character and as two must both work.
+    for rr in ("\u09dc", "\u09a1\u09bc"):
+        assert say(f"বিকাল সা{rr}ে পাঁচটা") == "বিকাল পাঁচটা তিরিশে"
+        assert say(f"বিকাল সা{rr}ে তিনটায় আসবেন") == "বিকাল তিনটা তিরিশে আসবেন"
+
+
+def test_azure_gets_appointment_in_english():
+    def say(text):
+        return unicodedata.normalize("NFC", azure_pronunciation(text))
+
+    def nfc(text):
+        return unicodedata.normalize("NFC", text)
+
+    # Sentences from real calls, with "য়" as one character and as two.
+    for ya in ("\u09df", "\u09af\u09bc"):
+        appt = f"অ্যাপ{ya}েন্টমেন্ট"
+        assert say(f"আমি {appt}টা খুঁজে বের করতে পারব।") == nfc("আমি appointment-টা খুঁজে বের করতে পারব।")
+        assert say(f"আপনি {appt} ক্যানসেল করতে চাচ্ছেন") == nfc("আপনি appointment ক্যানসেল করতে চাচ্ছেন")
+        assert say(f"{appt}টাই থাকুক") == nfc("appointment-টাই থাকুক")
+        assert say(f"{appt}ের সময়") == nfc("appointment-এর সময়")
+    assert say("আপনার appointment-টা বুক হয়ে গেছে") == nfc("আপনার appointment-টা বুক হয়ে গেছে")
 
 
 def test_cartesia_gets_appointment_in_bangla_script():
@@ -87,3 +110,19 @@ def test_weekday_question_not_read_as_twelve():
     assert fix_weekday_question("৯ তারিখ কী বারো?") == "৯ তারিখ কী বার?"
     assert fix_weekday_question("১২ তারিখে আসবো") == "১২ তারিখে আসবো"  # a real 12th stays
     assert fix_weekday_question("তারিখ কি 12টায়") == "তারিখ কি 12টায়"  # "12টায়" is a time, untouched
+
+
+def test_doctor_title_split_across_llm_pieces():
+    from bangla import whole_words
+
+    # Pieces exactly as Gemma streamed them in a test.
+    pieces = ["আপনার", " appointment ডা. ন", "ুসরাত জাহানের", " কাছে, আর ডা", ". তানভীর আহমেদ", " শনিবার বসেন।",
+              "\nআপনার appointment ডা", ". নুসরাত", " জাহানের কাছে,", " আর ডা. তান", "ভীর আহমেদ শনিবার ব", "সেন।"]
+    spoken, held = "", ""
+    for piece in pieces:
+        ready, held = whole_words(held, piece)
+        spoken += dhaka_words(ready)
+    spoken += dhaka_words(held)
+    assert "ডা." not in spoken
+    assert spoken.count("ডাক্তার") == 4
+    assert spoken.replace("ডাক্তার ", "ডা. ").replace("  ", " ") == "".join(pieces)

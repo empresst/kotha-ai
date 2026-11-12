@@ -1,4 +1,4 @@
-"""ByteVoice Bangladesh: Bangla voice receptionist for Rakib Dental Care.
+"""Kotha AI: Bangla voice receptionist for Rakib Dental Care.
 
 Flow of one call:
   browser joins a LiveKit room -> this worker is dispatched -> a `calls` row is
@@ -44,6 +44,7 @@ from bangla import (  # noqa: E402
     say_datetime,
     say_phone,
     spoken_digits,
+    whole_words,
 )
 from extraction import extract_and_store  # noqa: E402
 from prompt import build_prompt  # noqa: E402
@@ -549,16 +550,20 @@ class Receptionist(Agent):
             return {"ok": True}
         return await self._run("request_callback", {"category": category, "reason": reason, "phone": phone}, go())
 
-    # Clean up Kolkata words before anything is spoken.
+    # Clean up Kolkata words and "ডা." before anything is spoken.
     async def tts_node(self, text, model_settings):
         async def fixed():
-            said = ""
+            said = held = ""
             async for chunk in text:
                 self.last_spoke = time.monotonic()
                 said += chunk
                 if "নম্বর" in said and not self.state.phone_confirmed:
                     self.phone_mode(True)
-                yield dhaka_words(chunk)
+                ready, held = whole_words(held, chunk)
+                if ready:
+                    yield dhaka_words(ready)
+            if held:
+                yield dhaka_words(held)
         return Agent.default.tts_node(self, fixed(), model_settings)
 
 

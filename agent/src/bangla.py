@@ -7,6 +7,7 @@ format a time or read digits itself.
 from __future__ import annotations
 
 import re
+import unicodedata
 from datetime import datetime
 
 BN_DIGITS = str.maketrans("0123456789", "০১২৩৪৫৬৭৮৯")
@@ -107,9 +108,18 @@ def dhaka_words(text: str) -> str:
     return _DHAKA_RE.sub(lambda m: DHAKA_WORDS[m.group(1)], text)
 
 
+def whole_words(buffered: str, piece: str) -> tuple[str, str]:
+    """The LLM streams text in pieces that can split a word ("ডা" then ". তানভীর"),
+    so hold back the last unfinished word until the next piece arrives.
+    Returns (text ready to fix and speak, text still held back)."""
+    text = buffered + piece
+    cut = max(text.rfind(" "), text.rfind("\n"))
+    return (text[:cut], text[cut:]) if cut > 0 else ("", text)
+
+
 # Azure's bn-BD voices mispronounce "সাড়ে", so for Azure only:
-# "সাড়ে পাঁচটা" -> "পাঁচটা তিরিশে".
-_SARE_RE = re.compile(r"সাড়ে\s+([ঀ-৿]+?)টা")
+# "সাড়ে পাঁচটা" / "সাড়ে পাঁচটায়" -> "পাঁচটা তিরিশে".
+_SARE_RE = re.compile(r"সাড়ে\s+([ঀ-৿]+?)টা(?:য়)?")  # "সাড়ে তিনটায়" too
 
 
 # Cartesia reads Bangla script well but stumbles on an English word glued to a Bangla
@@ -123,8 +133,34 @@ def cartesia_pronunciation(text: str) -> str:
     return _LATIN_SUFFIX_RE.sub(" ", _APPT_RE.sub("অ্যাপয়েন্টমেন্ট", text))
 
 
+# Words Azure says wrong in Bangla script, and the spelling it says right.
+# The LLM sometimes writes "অ্যাপয়েন্টমেন্টটা"; Azure says "appointment-টা" correctly.
+# A Bangla ending after the word is kept: "অ্যাপয়েন্টমেন্টটা" -> "appointment-টা",
+# "অ্যাপয়েন্টমেন্টের" -> "appointment-এর".
+AZURE_SAY = {
+    "অ্যাপয়েন্টমেন্ট": "appointment",
+    "এপয়েন্টমেন্ট": "appointment",
+    "অ্যাপোয়েন্টমেন্ট": "appointment",
+    "এপোয়েন্টমেন্ট": "appointment",
+}
+# NFC on both sides: "য়" can be one character or two, and NFC always gives two.
+_AZURE_SAY = {unicodedata.normalize("NFC", k): v for k, v in AZURE_SAY.items()}
+_AZURE_SAY_RE = re.compile(
+    r"(?<![ঀ-৿])(" + "|".join(map(re.escape, sorted(_AZURE_SAY, key=len, reverse=True))) + r")([ঀ-৿]?)"
+)
+# An ending that starts with a vowel sign needs the full vowel after an English word: "ের" -> "এর".
+_FULL_VOWEL = dict(zip("ািীুূেৈোৌ", "আইঈউঊএঐওঔ"))
+_SARE_NFC_RE = re.compile(unicodedata.normalize("NFC", _SARE_RE.pattern))
+
+
+def _azure_word(m: re.Match) -> str:
+    after = m.group(2)
+    return _AZURE_SAY[m.group(1)] + ("-" + _FULL_VOWEL.get(after, after) if after else "")
+
+
 def azure_pronunciation(text: str) -> str:
-    return _SARE_RE.sub(r"\1টা তিরিশে", text)
+    text = _AZURE_SAY_RE.sub(_azure_word, unicodedata.normalize("NFC", text))
+    return _SARE_NFC_RE.sub(r"\1টা তিরিশে", text)
 
 
 # ---------------------------------------------------------------------------
