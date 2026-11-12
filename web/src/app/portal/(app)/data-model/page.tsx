@@ -61,7 +61,7 @@ export default async function DataModelPage() {
         </p>
         <p className="mt-1 max-w-3xl text-xs text-slate-500">
           Key columns shown. Full schema (every column, type, constraint, index and security policy):{" "}
-          <a href="https://github.com/empresst/bytevoice-bd/tree/main/supabase/migrations" target="_blank" rel="noopener noreferrer" className="font-medium text-sky-700 underline">
+          <a href="https://github.com/empresst/kotha-ai/tree/main/supabase/migrations" target="_blank" rel="noopener noreferrer" className="font-medium text-sky-700 underline">
             supabase/migrations on GitHub
           </a>
           .
