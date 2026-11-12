@@ -6,7 +6,6 @@ Kotha AI is a working demo of a Bangla AI receptionist for clinics in Bangladesh
 |---|---|
 | Landing page + Bangla caller | https://bytevoice-bd.vercel.app |
 | Clinic portal | https://bytevoice-bd.vercel.app/portal (demo login on request) |
-| Video overview (3 min) | https://www.loom.com/share/2bdaedee5a1a4a7f93fb1a71fec8659d |
 | Decisions and testing | [docs/DECISIONS.md](docs/DECISIONS.md) · every guard: [docs/GUARDS.md](docs/GUARDS.md) |
 
 **Stack:** Next.js 16 on Vercel · LiveKit Cloud + LiveKit Agents (Python) · Azure `bn-BD` speech-to-text and voice (Deepgram / Cartesia fallbacks) · Gemma 4 via LiveKit Inference (Groq fallback) · Supabase Postgres 17 (Mumbai).
