@@ -4,8 +4,8 @@ Kotha AI is a working demo of a Bangla AI receptionist for clinics in Bangladesh
 
 | | Link |
 |---|---|
-| Landing page + Bangla caller | https://bytevoice-bd.vercel.app |
-| Clinic portal | https://bytevoice-bd.vercel.app/portal (demo login on request) |
+| Landing page + Bangla caller | https://kotha-ai-bd.vercel.app |
+| Clinic portal | https://kotha-ai-bd.vercel.app/portal (demo login on request) |
 | Decisions and testing | [docs/DECISIONS.md](docs/DECISIONS.md) · every guard: [docs/GUARDS.md](docs/GUARDS.md) |
 
 **Stack:** Next.js 16 on Vercel · LiveKit Cloud + LiveKit Agents (Python) · Azure `bn-BD` speech-to-text and voice (Deepgram / Cartesia fallbacks) · Gemma 4 via LiveKit Inference (Groq fallback) · Supabase Postgres 17 (Mumbai).
@@ -22,10 +22,10 @@ Kotha AI is a working demo of a Bangla AI receptionist for clinics in Bangladesh
 The demo clinic is **রাকিব ডেন্টাল কেয়ার (Rakib Dental Care), Dhanmondi**: three doctors, eight services, Saturday–Thursday chambers, closed on Friday. All clinic, doctor and patient data is fictional.
 
 ### Quick evaluation path
-1. Open the [landing page](https://bytevoice-bd.vercel.app) and pick a free slot in *আমাদের চিকিৎসকবৃন্দ* (or just press the call button).
+1. Open the [landing page](https://kotha-ai-bd.vercel.app) and pick a free slot in *আমাদের চিকিৎসকবৃন্দ* (or just press the call button).
 2. Press **কল শুরু করুন** and allow the microphone. The first call after a quiet period takes about 20 s to connect (free tier waking up).
 3. Book by voice: the receptionist reads back your name, mobile number and the full booking before confirming. The slot turns grey on the page during the call.
-4. Open the [portal](https://bytevoice-bd.vercel.app/portal): the call appears with its transcript, English translation and extracted fields.
+4. Open the [portal](https://kotha-ai-bd.vercel.app/portal): the call appears with its transcript, English translation and extracted fields.
 5. Call again with the same mobile number and cancel or move the appointment.
 
 ---
