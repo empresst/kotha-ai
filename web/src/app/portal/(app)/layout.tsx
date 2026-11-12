@@ -15,7 +15,7 @@ export default async function PortalLayout({ children }: { children: React.React
     <div className="min-h-screen bg-slate-50 font-[family-name:var(--font-inter)] text-slate-900 lg:flex">
       <aside className="bg-[#0b1226] text-slate-300 lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-64 lg:flex-col">
         <div className="px-5 py-5">
-          <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-amber-400">ByteVoice · BD</Link>
+          <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-amber-400">Kotha AI · BD</Link>
           <p className="mt-1 font-semibold text-white">{clinic?.name_en ?? "Clinic"}</p>
           <p className="text-sm font-[family-name:var(--font-bangla)] text-slate-400">{clinic?.name_bn}</p>
         </div>

@@ -6,7 +6,7 @@ const bangla = Hind_Siliguri({ subsets: ["bengali", "latin"], weight: ["400", "5
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "ByteVoice Bangladesh | বাংলায় AI রিসেপশনিস্ট",
+  title: "Kotha AI | বাংলায় AI রিসেপশনিস্ট",
   description: "An AI receptionist that answers your clinic's calls in natural Bangla, books appointments and keeps every call organised.",
 };
 

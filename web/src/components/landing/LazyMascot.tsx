@@ -2,12 +2,12 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
-import type { VoiceState } from "@/components/three/ByteMascot";
+import type { VoiceState } from "@/components/three/KothaMascot";
 
-const ByteMascot = dynamic(() => import("@/components/three/ByteMascot"), { ssr: false });
+const KothaMascot = dynamic(() => import("@/components/three/KothaMascot"), { ssr: false });
 
-/** Byte only runs while this box is on screen, so two 3D scenes never render at once. */
-export function LazyByte({ className = "" }: { className?: string }) {
+/** The mascot only runs while this box is on screen, so two 3D scenes never render at once. */
+export function LazyMascot({ className = "" }: { className?: string }) {
   const box = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const voice = useRef<VoiceState>({ level: 0, phase: "idle", speaking: false });
@@ -18,5 +18,5 @@ export function LazyByte({ className = "" }: { className?: string }) {
     io.observe(el);
     return () => io.disconnect();
   }, []);
-  return <div ref={box} className={className}>{visible && <ByteMascot voice={voice} />}</div>;
+  return <div ref={box} className={className}>{visible && <KothaMascot voice={voice} />}</div>;
 }

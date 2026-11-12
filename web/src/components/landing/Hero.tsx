@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useRef } from "react";
 import { CallWidget, type CallPhase } from "@/components/call/CallWidget";
-import type { VoiceState } from "@/components/three/ByteMascot";
+import type { VoiceState } from "@/components/three/KothaMascot";
 import { COPY } from "./copy";
 import { DhakaSkyline } from "./DhakaSkyline";
 import { useLang, useT } from "./i18n";

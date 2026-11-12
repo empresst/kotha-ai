@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bytevoice-agent"
+name = "kotha-agent"
 version = "1.0.0"
-description = "Bangla voice receptionist for ByteVoice Bangladesh"
+description = "Bangla voice receptionist for Kotha AI"
 requires-python = ">=3.10, <3.15"
 
 dependencies = [

@@ -10,7 +10,7 @@ export const COPY = {
     demo: { bn: "ডেমো নিন", en: "Book a demo" },
   },
   hero: {
-    badge: { bn: "ByteVoice এখন বাংলাদেশে", en: "ByteVoice is now in Bangladesh" },
+    badge: { bn: "Kotha AI এখন বাংলাদেশে", en: "Kotha AI is now in Bangladesh" },
     title1: { bn: "আপনার হাসির যত্নে, আমরা আছি সবসময়!", en: "Caring for your smile, we're always here." },
     title2: { bn: "আপনার ডেন্টাল ক্লিনিকের AI সহকারী — এখন বাংলায়, ২৪/৭।", en: "Your dental clinic's AI assistant — now in Bangla, 24/7." },
     try: { bn: "এখনই কথা বলে দেখুন: রাকিব ডেন্টাল কেয়ার (ডেমো ক্লিনিক)", en: "Try it now: Rakib Dental Care (demo clinic)" },
@@ -33,8 +33,8 @@ export const COPY = {
   how: {
     title: { bn: "কীভাবে কাজ করে", en: "How it works" },
     steps: [
-      { bn: "রোগী ফোন করেন", en: "A patient calls", d: { bn: "সাথে সাথে Byte ধরে, সালাম দিয়ে শুরু করে। কোনো hold নেই।", en: "Byte answers instantly with a warm greeting. No hold music." } },
-      { bn: "Byte কাজটা করে দেয়", en: "Byte handles it", d: { bn: "খালি সময় দেখে appointment বুক করে, নাম আর নম্বর পড়ে শুনিয়ে নিশ্চিত করে।", en: "Checks real availability, books the slot, and reads the name and number back to confirm." } },
+      { bn: "রোগী ফোন করেন", en: "A patient calls", d: { bn: "সাথে সাথে Kotha ধরে, সালাম দিয়ে শুরু করে। কোনো hold নেই।", en: "Kotha answers instantly with a warm greeting. No hold music." } },
+      { bn: "Kotha কাজটা করে দেয়", en: "Kotha handles it", d: { bn: "খালি সময় দেখে appointment বুক করে, নাম আর নম্বর পড়ে শুনিয়ে নিশ্চিত করে।", en: "Checks real availability, books the slot, and reads the name and number back to confirm." } },
       { bn: "আপনার টিম সব দেখে", en: "Your team sees everything", d: { bn: "প্রতিটা কল, transcript, বুকিং আর callback পোর্টালে সাথে সাথে চলে আসে।", en: "Every call, transcript, booking and callback appears in the portal within seconds." } },
     ],
   },
@@ -69,7 +69,7 @@ export const COPY = {
     ],
   },
   cta: {
-    title: { bn: "আপনার ক্লিনিকে Byte চালু করতে চান?", en: "Want Byte answering your clinic's phone?" },
+    title: { bn: "আপনার ক্লিনিকে Kotha চালু করতে চান?", en: "Want Kotha answering your clinic's phone?" },
     sub: { bn: "১৫ মিনিটের ডেমোতে দেখাবো আপনার ক্লিনিকের জন্য কীভাবে কাজ করবে।", en: "A 15-minute demo, set up for your own clinic." },
     name: { bn: "আপনার নাম", en: "Your name" },
     clinic: { bn: "ক্লিনিক / হাসপাতালের নাম", en: "Clinic or hospital" },
@@ -77,5 +77,5 @@ export const COPY = {
     send: { bn: "ডেমোর অনুরোধ পাঠান", en: "Request a demo" },
     sent: { bn: "ধন্যবাদ! (এটা ডেমো ফর্ম, কোনো তথ্য পাঠানো হয়নি।)", en: "Thank you! (Demo form: nothing was sent.)" },
   },
-  footer: { bn: "StrategyByte-এর ByteVoice-এর জন্য একটি ডেমো · সব রোগী ও ক্লিনিকের তথ্য কাল্পনিক", en: "A demo for StrategyByte's ByteVoice · all patient and clinic data is fictional" },
+  footer: { bn: "Kotha AI · একটি ডেমো · সব রোগী ও ক্লিনিকের তথ্য কাল্পনিক", en: "Kotha AI · a demo · all patient and clinic data is fictional" },
 };

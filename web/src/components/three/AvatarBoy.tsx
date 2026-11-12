@@ -6,7 +6,7 @@ import { type VRM, VRMLoaderPlugin, VRMUtils } from "@pixiv/three-vrm";
 import { useCallback, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import type { VoiceState } from "./ByteMascot";
+import type { VoiceState } from "./KothaMascot";
 
 /**
  * The receptionist: a VRM anime character (Sakurada Fumiriya by pixiv, VRoid Hub

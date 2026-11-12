@@ -9,7 +9,7 @@ export default function LoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-[#070b1a] px-4">
       <form action={action} className="w-full max-w-sm space-y-5 rounded-2xl bg-white p-8 text-slate-900 shadow-2xl">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-600">ByteVoice · Bangladesh</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-amber-600">Kotha AI · Bangladesh</p>
           <h1 className="mt-1 text-2xl font-bold">Clinic portal</h1>
           <p className="mt-1 text-sm text-slate-500">Rakib Dental Care · রাকিব ডেন্টাল কেয়ার</p>
         </div>

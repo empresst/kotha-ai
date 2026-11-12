@@ -1,11 +1,11 @@
-# ByteVoice Bangladesh — a Bangla AI receptionist for dental clinics
+# Kotha AI — a Bangla AI receptionist for dental clinics
 
-A working demo of StrategyByte's ByteVoice for Bangladesh: a live Bangla voice receptionist that books, reschedules and cancels real appointments, a landing page with a 3D receptionist and a live slot board, and a staff portal with every call's transcript and structured data.
+Kotha AI is a working demo of a Bangla AI receptionist for clinics in Bangladesh: a live Bangla voice receptionist that books, reschedules and cancels real appointments, a landing page with a 3D receptionist and a live slot board, and a staff portal with every call's transcript and structured data.
 
 | | Link |
 |---|---|
 | Landing page + Bangla caller | https://bytevoice-bd.vercel.app |
-| Clinic portal | https://bytevoice-bd.vercel.app/portal (reviewer login is in the submission email) |
+| Clinic portal | https://bytevoice-bd.vercel.app/portal (demo login on request) |
 | Video overview (3 min) | https://www.loom.com/share/2bdaedee5a1a4a7f93fb1a71fec8659d |
 | Decisions and testing | [docs/DECISIONS.md](docs/DECISIONS.md) · every guard: [docs/GUARDS.md](docs/GUARDS.md) |
 

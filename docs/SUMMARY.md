@@ -1,6 +1,6 @@
 # What was built (short)
 
-**Landing page** — Next.js on Vercel (Mumbai). 3D VRM receptionist with headset (lip movement while the agent talks, smile, blink, wave, cursor-follow, and she looks down "at the schedule" while the agent checks or books), Dhaka dusk skyline, Bangla/English toggle, live "Our doctors" slot board (free/booked, pick a slot → start a call; a slot booked on a call turns grey during the call), features, use cases, pricing in taka, demo form, smaller 3D Byte mascot.
+**Landing page** — Next.js on Vercel (Mumbai). 3D VRM receptionist with headset (lip movement while the agent talks, smile, blink, wave, cursor-follow, and she looks down "at the schedule" while the agent checks or books), Dhaka dusk skyline, Bangla/English toggle, live "Our doctors" slot board (free/booked, pick a slot → start a call; a slot booked on a call turns grey during the call), features, use cases, pricing in taka, demo form, smaller 3D mascot.
 
 **Browser call** — "Talk to our Bangla caller": rate-limited token route (20 calls/hour per visitor), fresh LiveKit room per call, connecting/live/ended states, captions, clear mic/network/timeout errors.
 

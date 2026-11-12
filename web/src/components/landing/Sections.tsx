@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { COPY } from "./copy";
-import { LazyByte } from "./LazyByte";
+import { LazyMascot } from "./LazyMascot";
 import { LangToggle, useLang, useT } from "./i18n";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.5 } };
@@ -25,8 +25,8 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/5 bg-[#070b1a]/70 backdrop-blur-lg">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <a href="#top" className="flex items-center gap-2 font-[family-name:var(--font-inter)] text-lg font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 text-sm">B</span>
-          ByteVoice <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-300">BD</span>
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-indigo-400 to-indigo-700 text-sm">K</span>
+          Kotha AI <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-300">BD</span>
         </a>
         <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
           <a href="#doctors" className="hover:text-white">{t(n.doctors)}</a>
@@ -164,7 +164,7 @@ export function DemoCta() {
         <div className="flex flex-col">
           <h2 className="text-3xl font-bold">{t(c.title)}</h2>
           <p className="mt-3 text-slate-300">{t(c.sub)}</p>
-          <LazyByte className="mx-auto mt-4 h-56 w-56 sm:h-64 sm:w-64 lg:mx-0" />
+          <LazyMascot className="mx-auto mt-4 h-56 w-56 sm:h-64 sm:w-64 lg:mx-0" />
         </div>
         {sent ? (
           <p className="self-center rounded-xl bg-emerald-500/15 p-4 text-emerald-200">{t(c.sent)}</p>

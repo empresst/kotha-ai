@@ -1,4 +1,4 @@
--- ByteVoice Bangladesh: core schema
+-- Kotha AI: core schema
 -- One clinic can have many doctors, services, patients, calls and appointments.
 -- Every call keeps its transcript, the fields the AI extracted, every tool the
 -- agent ran, and any appointment it created or changed.
